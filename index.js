@@ -23,7 +23,9 @@ const server = http.createServer((req, res) => {
 server.on('clientError', (err, socket) => {
     socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });
-server.listen(PORT);
+server.listen(PORT, () => {
+    console.log('Listening on port ' + PORT + ' and serving the latest file in: ' + DIR);
+});
 
 /**
 Find the latest file of a directory.
